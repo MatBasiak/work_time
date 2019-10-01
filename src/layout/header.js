@@ -19,9 +19,12 @@ export default class Header extends Component {
     this.clickHandler = this.clickHandler.bind(this);
     this.setTime = this.setTime.bind(this);
   }
+  timeDifference(start, end) {
+    console.log(end - start);
+  }
 
   clickHandler() {
-    this.setState();
+    this.timeDifference(this.state.endValue, this.state.startValue);
   }
   setTime(e) {
     switch (e.target.name) {
@@ -57,7 +60,10 @@ export default class Header extends Component {
           value={this.state.endValue}
           onChange={e => this.setTime(e)}
         />
-        <Button onClick={this.clickHandler()}>ADD</Button>
+        <Button onClick={this.clickHandler}>ADD</Button>
+        <p>{this.state.startValue}</p>
+        <p>{this.state.endValue}</p>
+        <p></p>
       </Container>
     );
   }
