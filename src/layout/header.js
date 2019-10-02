@@ -12,20 +12,52 @@ export default class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      startValue: "11:12",
-      endValue: "12:12"
+      startValue: "11:11",
+      endValue: "22:22",
+      result: " "
     };
 
     this.clickHandler = this.clickHandler.bind(this);
     this.setTime = this.setTime.bind(this);
   }
+
+  /**
+   *
+   * @param {string} start '11:11'
+   * @param {string} end   '11:11'
+   * convert them to array of strings
+   * calculate  difference between each elements of array
+   * and return array of numbers
+   * result.reduce combine array to single element
+   *@return result string 11:11
+   */
   timeDifference(start, end) {
-    console.log(end - start);
+    start = [...start];
+    end = [...end];
+    let result = start.map((item, i) => {
+      if (item === ":") {
+        return ":";
+      }
+      return item - end[i].toString();
+    });
+    result = result.reduce((c, i) => c + i);
+    return result;
   }
 
   clickHandler() {
-    this.timeDifference(this.state.endValue, this.state.startValue);
+    let result = this.timeDifference(
+      this.state.endValue,
+      this.state.startValue
+    );
+    this.setState({
+      result
+    });
   }
+  /**
+   *
+   * @param {event} e
+   * function setting to state value of inputs
+   */
   setTime(e) {
     switch (e.target.name) {
       case "start":
@@ -43,6 +75,7 @@ export default class Header extends Component {
         break;
     }
   }
+
   render() {
     return (
       <Container>
@@ -63,7 +96,7 @@ export default class Header extends Component {
         <Button onClick={this.clickHandler}>ADD</Button>
         <p>{this.state.startValue}</p>
         <p>{this.state.endValue}</p>
-        <p></p>
+        <p>{this.state.result}</p>
       </Container>
     );
   }
