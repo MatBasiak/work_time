@@ -12,9 +12,11 @@ export default class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      date: new Date(),
       startValue: "11:11",
       endValue: "22:22",
-      result: " "
+      result: " ",
+      list: []
     };
 
     this.clickHandler = this.clickHandler.bind(this);
@@ -59,6 +61,14 @@ export default class Header extends Component {
     this.setState({
       result
     });
+
+    this.setState(state => {
+      const list = state.list.concat(state.result);
+      return {
+        list
+      };
+    });
+    console.log(this.state);
   }
   /**
    *
@@ -104,6 +114,7 @@ export default class Header extends Component {
         <p>{this.state.startValue}</p>
         <p>{this.state.endValue}</p>
         <p>{this.state.result}</p>
+        <p>{this.state.date.toLocaleDateString()}</p>
       </Container>
     );
   }
