@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Button from "../components/button";
 import Input from "../components/input";
-
 import DateDisplay from "../components/date";
+import Clock from "../components/clock";
 
 const Container = styled.div`
     background-color: red;
@@ -97,6 +97,7 @@ export default class Header extends Component {
     render() {
         return (
             <Container>
+                <Clock />
                 <DateDisplay />
                 start
                 <Input

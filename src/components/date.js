@@ -23,15 +23,15 @@ class DateDisplay extends Component {
             date: new Date()
         };
     }
-    componentWillMount() {
-        this.tick();
-    }
+    // componentWillMount() {
+    //     this.tick();
+    // }
 
-    tick() {
-        this.setState({
-            date: new Date()
-        });
-    }
+    // tick() {
+    //     this.setState({
+    //         date: new Date()
+    //     });
+    // }
     render() {
         return (
             <Container>
