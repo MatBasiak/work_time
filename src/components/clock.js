@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import React, { Component } from "react";
-import moment from "moment";
 
 const Container = styled.div`
     color: blue;
@@ -19,23 +18,27 @@ const Container = styled.div`
 class Clock extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            date: new Date()
-        };
+        this.state = { date: new Date() };
     }
-    // componentWillMount() {
-    //     this.tick();
-    // }
 
-    // tick() {
-    //     this.setState({
-    //         date: new Date()
-    //     });
-    // }
+    componentDidMount() {
+        this.timerID = setInterval(() => this.tick(), 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+
+    tick() {
+        this.setState({
+            date: new Date()
+        });
+    }
+
     render() {
         return (
             <Container>
-                <p>{moment().format("HH:MM:SS")}</p>
+                <h2> {this.state.date.toLocaleTimeString()}.</h2>
             </Container>
         );
     }

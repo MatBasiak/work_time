@@ -20,22 +20,25 @@ class DateDisplay extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            date: new Date()
+            date: ""
         };
+        this.saveDate = this.saveDate.bind(this);
     }
-    // componentWillMount() {
-    //     this.tick();
-    // }
+    //TODO clean this component
+    saveDate() {
+        this.setState({
+            date: moment().format("DD:MM:YYYY")
+        });
+    }
+    clickHandler() {
+        this.saveDate();
+    }
 
-    // tick() {
-    //     this.setState({
-    //         date: new Date()
-    //     });
-    // }
     render() {
         return (
-            <Container>
+            <Container onClick={this.saveDate}>
                 <p>{moment().format("DD:MM:YYYY")}</p>
+                <p>{this.state.date}</p>
             </Container>
         );
     }

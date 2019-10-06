@@ -4,6 +4,7 @@ import Button from "../components/button";
 import Input from "../components/input";
 import DateDisplay from "../components/date";
 import Clock from "../components/clock";
+import moment from "moment";
 
 const Container = styled.div`
     background-color: red;
@@ -16,14 +17,18 @@ export default class Header extends Component {
         this.state = {
             startValue: "11:11",
             endValue: "22:22",
-            result: " ",
-            list: []
+            temporaryResult: " ",
+            listOfRecords: [],
+            date: moment().format("DD:MM:YYYY")
         };
 
         this.clickHandler = this.clickHandler.bind(this);
         this.setTime = this.setTime.bind(this);
     }
 
+    componentDidMount() {
+        this.clickHandler();
+    }
     /**
    *
    * @param {string} start '11:11'
@@ -60,15 +65,22 @@ export default class Header extends Component {
             this.state.endValue
         );
         this.setState({
-            result
+            temporaryResult: result
         });
 
+        // TODO create array of objects , now is array of results
         this.setState(state => {
-            const list = state.list.concat(state.result);
+            const listOfRecords = state.listOfRecords.concat(
+                state.date,
+                state.temporaryResult,
+                state.startValue,
+                state.endValue
+            );
             return {
-                list
+                listOfRecords
             };
         });
+
         console.log(this.state);
     }
     /**
