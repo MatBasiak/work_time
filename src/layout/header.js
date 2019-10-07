@@ -81,8 +81,9 @@ export default class Header extends Component {
             };
         });
 
-        console.log(this.state);
+        console.log(this.state.listOfRecords);
     }
+
     /**
      *
      * @param {event} e
@@ -128,7 +129,12 @@ export default class Header extends Component {
                 <Button onClick={this.clickHandler}>ADD</Button>
                 <p>{this.state.startValue}</p>
                 <p>{this.state.endValue}</p>
-                <p>{this.state.result}</p>
+                <p>{this.state.temporaryResult}</p>
+                <ul>
+                    {this.state.listOfRecords.map((item, i) => (
+                        <p key={i}>{item}</p>
+                    ))}
+                </ul>
             </Container>
         );
     }
