@@ -5,8 +5,16 @@ class ListOfRecords extends Component {
         super(props);
         this.state = {};
     }
+
+    slicedData(data) {
+        const arrayOfSlicedData = [];
+        arrayOfSlicedData.push([data.slice(0, 4)]);
+        console.log(arrayOfSlicedData);
+        return arrayOfSlicedData;
+    }
+
     render() {
-        return <div>{this.props.records}</div>;
+        return <div>dupa</div>;
     }
 }
 

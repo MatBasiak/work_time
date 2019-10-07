@@ -69,20 +69,20 @@ class Header extends Component {
             temporaryResult: result
         });
 
-        // TODO create array of objects , now is array of results
         this.setState(state => {
-            const listOfRecords = state.listOfRecords.concat(
-                state.date,
-                state.temporaryResult,
-                state.startValue,
-                state.endValue
-            );
+            const listOfRecords = [
+                ...state.listOfRecords,
+                {
+                    date: state.date,
+                    result: state.temporaryResult,
+                    startValue: state.startValue,
+                    endValue: state.endValue
+                }
+            ];
             return {
                 listOfRecords
             };
         });
-
-        console.log(this.state.listOfRecords);
     }
 
     /**
@@ -109,6 +109,7 @@ class Header extends Component {
     }
 
     render() {
+        console.log(this.state.listOfRecords);
         return (
             <Container>
                 <Clock />
