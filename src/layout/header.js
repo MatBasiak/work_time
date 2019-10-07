@@ -5,13 +5,14 @@ import Input from "../components/input";
 import DateDisplay from "../components/date";
 import Clock from "../components/clock";
 import moment from "moment";
+import ListOfRecords from "./listOfRecords";
 
 const Container = styled.div`
     background-color: red;
     color: white;
 `;
 
-export default class Header extends Component {
+class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -130,12 +131,10 @@ export default class Header extends Component {
                 <p>{this.state.startValue}</p>
                 <p>{this.state.endValue}</p>
                 <p>{this.state.temporaryResult}</p>
-                <ul>
-                    {this.state.listOfRecords.map((item, i) => (
-                        <p key={i}>{item}</p>
-                    ))}
-                </ul>
+                <ListOfRecords records={this.state.listOfRecords} />>
             </Container>
         );
     }
 }
+
+export default Header;
