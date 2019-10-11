@@ -6,6 +6,8 @@ import DateDisplay from "../components/date";
 import Clock from "../components/clock";
 import moment from "moment";
 import ListOfRecords from "./listOfRecords";
+import uuid from "uuid/v1";
+import timeDifference from "../functions/time";
 
 const Container = styled.div`
     background-color: red;
@@ -30,41 +32,9 @@ class Header extends Component {
     componentDidMount() {
         this.clickHandler();
     }
-    /**
-   *
-   * @param {string} start '11:11'
-   * @param {string} end   '11:11'
-   * convert them to array of strings
-   
-   *@return result string 11:11
-   */
-    timeDifference(start, end) {
-        start = [...start];
-        end = [...end];
-
-        let startHours = start[0].concat(start[1]);
-        let startMinutes = start[3].concat(start[4]);
-        let endHours = end[0].concat(end[1]);
-        let endMinutes = end[3].concat(end[4]);
-        let resultHours = endHours - startHours;
-        let resultMinutes = endMinutes - startMinutes;
-
-        if (startMinutes > endMinutes) {
-            resultMinutes = 60 - -resultMinutes;
-            resultHours--;
-        }
-        if (+endHours >= 0 && +endHours < startHours) {
-            resultHours = 24 - startHours + +endHours;
-        }
-
-        return `${resultHours}:${resultMinutes}`;
-    }
 
     clickHandler() {
-        let result = this.timeDifference(
-            this.state.startValue,
-            this.state.endValue
-        );
+        let result = timeDifference(this.state.startValue, this.state.endValue);
         this.setState({
             temporaryResult: result
         });
@@ -76,7 +46,8 @@ class Header extends Component {
                     date: state.date,
                     result: state.temporaryResult,
                     startValue: state.startValue,
-                    endValue: state.endValue
+                    endValue: state.endValue,
+                    id: uuid()
                 }
             ];
             return {
