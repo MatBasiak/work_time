@@ -6,13 +6,6 @@ class ListOfRecords extends Component {
         this.state = {};
     }
 
-    slicedData(data) {
-        const arrayOfSlicedData = [];
-        arrayOfSlicedData.push([data.slice(0, 4)]);
-        console.log(arrayOfSlicedData);
-        return arrayOfSlicedData;
-    }
-
     render() {
         return <div>dupa</div>;
     }
