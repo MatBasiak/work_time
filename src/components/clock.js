@@ -5,14 +5,15 @@ const Container = styled.div`
     color: blue;
     font-size: 25px;
     display: block;
+    text-align: right;
 
     border: 1px solid green;
-    p {
+    /* p {
         padding: 0;
         margin: 0;
-        text-align: right;
+        text-align: ;
         font-size: 36px;
-    }
+    } */
 `;
 
 class Clock extends Component {
@@ -38,7 +39,7 @@ class Clock extends Component {
     render() {
         return (
             <Container>
-                <h2> {this.state.date.toLocaleTimeString()}.</h2>
+                <h2> {this.state.date.toLocaleTimeString()}</h2>
             </Container>
         );
     }

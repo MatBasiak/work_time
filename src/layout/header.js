@@ -14,6 +14,9 @@ const Container = styled.div`
     color: white;
 `;
 
+// TODO connect state with context
+// send records to context and list of records need to consume this data and render
+// list of records
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -100,10 +103,6 @@ class Header extends Component {
                     onChange={e => this.setTime(e)}
                 />
                 <Button onClick={this.clickHandler}>ADD</Button>
-                <p>{this.state.startValue}</p>
-                <p>{this.state.endValue}</p>
-                <p>{this.state.temporaryResult}</p>
-                <ListOfRecords records={this.state.listOfRecords} />>
             </Container>
         );
     }

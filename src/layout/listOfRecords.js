@@ -1,14 +1,10 @@
-import React, { Component } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { TimeRecordContext } from "../contexts/TimeRecordContext";
 
-class ListOfRecords extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+const ListOfRecords = () => {
+    const { timeRecords } = useContext(TimeRecordContext);
 
-    render() {
-        return <div>dupa</div>;
-    }
-}
+    return "list of records";
+};
 
 export default ListOfRecords;
